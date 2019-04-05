@@ -1,0 +1,43 @@
+<div>
+  <br />
+  <select (change)="onCategoryChange($event.target.value)">
+    <option value="">Select a category</option>
+    <option *ngFor="let category of categories" value="{{category.CategoryID}}">{{category.CategoryName}}</option>
+  </select>
+</div>
+<br />
+<div *ngIf="products !== undefined">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          Product ID
+        </th>
+        <th>
+          Product Name
+        </th>
+        <th>
+          Unit Price
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>
+          {{product.ProductID}}
+        </td>
+        <td>
+          {{product.ProductName}}
+        </td>
+        <td>
+          {{product.UnitPrice}}
+        </td>
+      </tr>
+      <tr *ngIf="products.length == 0" class="table-info">
+        <td colspan="3">
+          No products currently available for this category
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
